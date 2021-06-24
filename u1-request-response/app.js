@@ -8,61 +8,83 @@ const app = express()
 app.use(express.static('public'))
 
 // Routes
-// localhost:3000
-app.get('/', (req, res) => {
-    res.send('better world')
-})
-
-// localhost:3000/html
-app.get('/html', (req, res) => {
+// localhost:3000/labs
+app.get('/labs', (req, res) => {
     res.send(`
       <html><body>
-        <h1>Technologies</h1>
-        <ul>
-          <li>JavaScript</li>
-          <li>Node</li>
-          <li>Express</li>
-        </ul>
+        <li>1. <a href="/profiles/waroj">/profiles/waroj</a></li>
+        <li>2. <a href="/api/profiles/waroj">/api/profiles/waroj</a></li>
+        <li>3. <a href="/cat-simulator">/cat-simulator</a></li>
+        <li>4. <a href="/admin/grades">/admin/grades</a> AND <a href="/api/grades">/api/grades</a> AND <a href="/boredom">/boredom</a></li>
       </body></html>
     `)
   }) 
 
-// localhost:3000/json
-app.get('/json', (req, res) => {
+// localhost:3000/profiles/waroj
+app.get('/profiles/waroj', (req, res) => {
+    res.send(`
+      <html><body>
+        <h1>Waroj Yoopitaksakul</h1>
+        Nickname: Peet<br><br>
+        Likes: Black color, Computer, Techonology<br><br>
+        Hobbies: Listen to music, Play games, Read a book<br><br>
+        Motto: Trial and error is the source of our knowledge
+      </body></html>
+    `)
+  })
+
+// localhost:3000/api/profiles/waroj
+app.get('/api/profiles/waroj', (req, res) => {
     res.json({
-        technologies: ['JavaScript', 'Noodle', 'Express']
+        name: 'Waroj Yoopitaksakul' ,
+        nickname: 'Peet',
+        likes: [
+          'Black color', 'Computer', 'Techonology'
+        ],
+        hobbies: [
+          'Listen to music', 'Play games', 'Read a book'
+        ],
+        motto: 'Trial and error is the source of our knowledge'
     })
 })
 
+// localhost:3000/cat
+app.get('/cat-simulator', (req, res) => {
+  res.send(`
+    <html>
+      <head><link rel="stylesheet" href="/styles.css"></head>
+      <body class="cats">
+      <a href="/cat-result">Pet the cat</a>
+      <img src="/images/cat-simulator.jpg" width="500" />
+    </body></html>
+  `)
+ })
+
+ app.get('/cat-result', (req, res) => {
+   res.send(`
+      <html>
+        <head><link rel="stylesheet" href="/styles.css"></head>
+        <body class="cats">
+        <a href="/cat-simulator">Ignore the cat</a>
+        <img src="/images/cat-result.jpg" width="500" />
+      </body></html>
+   `)
+ })
+
 // localhost:3000/status
-app.get('/status', (req, res) => {
-    res.sendStatus(403)
+app.get('/admin/grades', (req, res) => {
+    res.sendStatus(401)
 })
 
-app.get('/status-200', (req, res) => {
-    res.sendStatus(200)
+app.get('/api/grades', (req, res) => {
+    res.status(401).send('Invalid OAuth token')
 })
 
-app.get('/status-400', (req, res) => {
-    res.sendStatus(400)
+app.get('/boredom', (req, res) => {
+    res.status(404).send("Sorry - we don't have that here!")
 })
 
-// localhost:3000/status2
-app.get('/status2', (req, res) => {
-    res.status(500).send('Oh no, something went wrong')
-})
-
-// localhost:3000/html-pic
-app.get('/html-pic', (req, res) => {
-    res.send(`
-      <html><body>
-        <h1>Hello</h1>
-        <img src="/images/cat.jpg" width="300" />
-      </html></body>
-    `)
-   })
-  
 // Start server
 const PORT = 3000
 app.listen(PORT, () => console.log(
-  `listening on http://localhost:${PORT}`))
+  `listening on http://localhost:${PORT}/labs`))

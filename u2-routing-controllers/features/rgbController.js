@@ -5,13 +5,13 @@ const getRGB = (req, res) => {
   const avg = Math.round((r + g + b) / 3)
 
   if (avg < 128) {
-    res.send(`<html><body style="background-color: rgb(${r}, ${g}, ${b});">
+    res.send(`<body style="background-color: rgb(${r}, ${g}, ${b});">
     <font color=white> red: ${r}, green: ${g}, blue: ${b} <br>
-    avg: ${avg} </font></body></html>`)
+    avg: ${avg} </font>`)
   } else {
-    res.send(`<html><body style="background-color: rgb(${r}, ${g}, ${b});">
+    res.send(`<body style="background-color: rgb(${r}, ${g}, ${b});">
     red: ${r}, green: ${g}, blue: ${b} <br>
-    avg: ${avg} </font></body></html>`)
+    avg: ${avg} </font>`)
   }
 }
 

@@ -1,0 +1,10 @@
+{{#>uni student}}
+  <h1>{{ code }} - {{ name }}</h1>
+
+  <h2>Enrollment history:</h2>
+  <ul>
+  {{#each enrollments}}
+    <li><a href='/iterations/{{ iterationCode }}'>{{ iterationCode }} {{title}}</a></li>
+  {{/each}}
+  </ul>
+{{/uni}}

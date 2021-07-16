@@ -2,9 +2,9 @@ const { db } = require('../_services/firebase-initialized')
 
 const iterationLists = async (req, res) => {
   const query = db.collection('iterations').get()
-  const iteration = (await query).docs.map(doc => doc.data())
+  const iterations = (await query).docs.map(doc => doc.data())
 
-  res.render('uni-iteration-list', { iteration })
+  res.render('uni-iteration-list', { iterations })
 }
 
 const iterationDetails = async (req, res) => {
@@ -28,15 +28,15 @@ const courseLists = async (req, res) => {
     .where('year', '==', 2021)
     .where('semester', '==', 1)
     .get()
-  const iteration = (await query).docs.map(doc => doc.data())
+  const courses = (await query).docs.map(doc => doc.data())
 
-  res.render('uni-course-list', { iteration })
+  res.render('uni-course-list', { courses })
 }
 
 const courseDetails = async (req, res) => {
-  const code = req.params.code
+  const iterationCode = req.params.code
   const query = db.collection('iterations')
-    .where('courseCode', '==', code)
+    .where('courseCode', '==', iterationCode)
     .orderBy('iterationCode', 'desc')
     .limit(1)
     .get()

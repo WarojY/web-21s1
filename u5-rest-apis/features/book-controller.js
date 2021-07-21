@@ -12,16 +12,11 @@ const readBooks = async (req, res) => {
     const payload = (await query)
       .docs
       .map(doc => doc.data())
-      .map(data => ({
-        isbn13: data.isbn13,
-        title: data.title,
-        authors: data.authors,
-        pages: data.pages
-      }))
+      .map(({ isbn13, title, authors, pages }) => ({ isbn13, title, authors, pages }))
 
     res.json({
       result: 'ok',
-      payload: payload,
+      payload,
       count: payload.length
     })
   } catch (err) {

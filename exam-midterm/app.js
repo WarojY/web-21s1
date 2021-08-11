@@ -25,11 +25,11 @@ app.use(urlencoded({ extended: false }))
 app.get('/', index)
 
 // TODO: เขียนเส้นทางของคุณที่นี่ // Write your routes here
-app.get('/sports/new', sportCreateForm)
 app.get('/sports', sportList)
+app.post('/sports', sportCreateByForm)
+app.get('/sports/new', sportCreateForm)
 app.get('/sports/:slug', sportDetails)
 app.get('/sports/:slug/schedule', sportSchedule)
-app.post('/sports', sportCreateByForm)
 
 // General
 app.get('/images/:catchall', (_req, res) => res.redirect('/images/404.jpg'))

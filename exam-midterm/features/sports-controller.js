@@ -33,7 +33,7 @@ const sportCreateByForm = async (req, res) => {
   const { slug, name, description, eventCount } = req.body
   const data = { slug, name, description, eventCount }
 
-  const query = db.collection('sports').doc(slug).set(data)
+  const query = db.collection('sports').doc(slug).set(data, { merge: true })
 
   await query
   res.redirect(`/sports/${slug}`)

@@ -3,6 +3,7 @@ const exphbs = require('express-handlebars')
 const { json, urlencoded } = require('body-parser')
 
 const { index } = require('./features/index-controller')
+const { cinemaList, cinemaDetails } = require('./features/cinema-controller')
 
 const app = express()
 
@@ -22,5 +23,7 @@ app.use(urlencoded({ extended: false }))
 
 // Routes
 app.get('/', index)
+app.get('/cinemas', cinemaList)
+app.get('/cinemas/:slug', cinemaDetails)
 
 module.exports = { app }

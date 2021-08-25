@@ -1,0 +1,11 @@
+# Secrets
+service-account*.json
+
+# Deps
+node_modules
+
+# Logs
+*.Log
+
+# OS
+.DS_Store

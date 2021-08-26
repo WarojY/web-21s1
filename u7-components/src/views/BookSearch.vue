@@ -22,10 +22,6 @@ import BookCard from './BookCard.vue'
 export default class BookSearch extends Vue {
   q = ''
   get books (): Book[] { return searchBooks(this.q) }
-
-  created (): void {
-    this.q = this.$route.query.q as string | null ?? ''
-  }
 }
 </script>
 

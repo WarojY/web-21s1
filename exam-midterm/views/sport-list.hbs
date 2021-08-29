@@ -1,0 +1,10 @@
+{{#>page}}
+
+<h1>Sport List</h1>
+  <ul>
+    {{#each sportList}}
+    <li><a href='/sports/{{slug}}'>{{name}} </a><img src="/images/sports/{{slug}}.png" width="5%" /></li>
+    {{/each}}
+  </ul>
+
+{{/page}}

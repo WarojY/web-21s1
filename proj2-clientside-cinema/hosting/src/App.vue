@@ -1,9 +1,28 @@
 <template>
-  <div
-    id="app"
-    class="has-background-light"
-  >
+  <div id="app" class="has-background-light">
     <!-- ADD NAVBAR HERE -->
+    <b-navbar class="is-dark" wrapper-class="container">
+      <template #brand>
+        <b-navbar-item
+          tag="router-link"
+          :to="{ name: 'Home' }"
+          class="is-size-5"
+        >
+          <p class="is-size-3 has-text-weight-bold">BECinema</p>
+        </b-navbar-item>
+      </template>
+
+      <template #start>
+        <b-navbar-item tag="router-link" :to="{ name: 'CinemaList' }">
+          Cinemas
+        </b-navbar-item>
+        <b-navbar-item tag="router-link" :to="{ name: 'FilmList' }">
+          Films
+        </b-navbar-item>
+      </template>
+
+      <template #end> </template>
+    </b-navbar>
 
     <div class="container py-5">
       <router-view />
@@ -29,9 +48,7 @@
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'FilmList' }">
-              Film List
-            </router-link>
+            <router-link :to="{ name: 'FilmList' }"> Film List </router-link>
           </li>
           <li>
             <router-link
@@ -56,9 +73,7 @@
             </router-link>
           </li>
           <li>
-            <router-link :to="{ name: 'Tickets' }">
-              My Tickets
-            </router-link>
+            <router-link :to="{ name: 'Tickets' }"> My Tickets </router-link>
           </li>
         </ol>
       </div>

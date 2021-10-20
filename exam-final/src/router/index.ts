@@ -24,6 +24,21 @@ const routes: Array<RouteConfig> = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/results/:resultSlug',
+    name: 'ResultDetails',
+    component: ResultDetails
+  },
+  {
+    path: '/results',
+    name: 'ResultList',
+    component: ResultList
+  },
+  {
+    path: '/results/new',
+    name: 'ResultCreate',
+    component: ResultCreate
   }
 ]
 

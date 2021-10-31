@@ -2,7 +2,7 @@
   <div class="cinema-list content">
     <h1 class="title">Cinemas</h1>
     <ul>
-      <li class="is-size-4" v-for="cinema in cinemas" :key="cinema.id">
+      <li class="is-size-4" v-for="cinema in cinemas" :key="cinema.slug">
         <router-link
           :to="{
             name: 'CinemaDetails',
